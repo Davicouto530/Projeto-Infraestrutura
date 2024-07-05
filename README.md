@@ -67,7 +67,7 @@ enable
 !Configuração de data/hora em inglês, abreviado ou completo
 !Exemplo: October ou Oct
 !Primeiro Hora no formato: 00:00:00 (hora:minutos:segundos) depois Data no formato: Dia Mês Ano
-clock set ??:??:?? ?? ???????? ????
+clock set 15:39:00 03/07/2024
 
 	!Acessar modo de Configuração Global
 	configure terminal
@@ -77,7 +77,7 @@ clock set ??:??:?? ?? ???????? ????
 	!Mudar o nome do Switch 3560 para cada equipamento do seu grupo
 	!OBSERVAÇÃO IMPORTANTE: veja o arquivo 00-DocumentacaoDaRede.txt a partir da linha: 68 
 	!(#03_ Nome dos Switches, Routers e Access Point de Cada Grupo:)
-	hostname sw-g???
+	hostname sw-g03
 
 	!Habilitar o serviço de Criptografia de Senhas do Tipo-7 Password 
 	service password-encryption
@@ -104,10 +104,10 @@ clock set ??:??:?? ?? ???????? ????
 	!Consultar Planilha de Nomes de Usuários
 	!OBSERVAÇÃO: Caso o grupo tenha menos integrantes, desconsiderar a
 	!criação de 04 (quatro) usuários
-	username ???nome_do_primeiro_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_segundo_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_terceiro_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_quarto_integrante??? privilege 15 secret 123@senac
+	username carlos privilege 15 secret 123@senac
+	username nathan privilege 15 secret 123@senac
+	username davi privilege 15 secret 123@senac
+	username luiz privilege 15 secret 123@senac
 	
 	!Acessando a linha console
 	line console 0
@@ -146,7 +146,7 @@ enable
 !Configuração de data/hora em inglês, abreviado ou completo
 !Exemplo: October ou Oct
 !Primeiro Hora no formato: 00:00:00 (hora:minutos:segundos) depois Data no formato: Dia Mês Ano
-clock set ??:??:?? ?? ???????? ????
+clock set 16:07:00 03/07/2024
 
 	!Acessar modo de Configuração Global
 	configure terminal
@@ -156,7 +156,7 @@ clock set ??:??:?? ?? ???????? ????
 	!Mudar o nome do Router 2911 para cada equipamento do seu grupo
 	!OBSERVAÇÃO IMPORTANTE: veja o arquivo 00-DocumentacaoDaRede.txt a partir da linha: 68 
 	!(#03_ Nome dos Switches, Routers e Access Point de Cada Grupo:)
-	hostname rt-g???
+	hostname rt-g03
 
 	!Habilitar o serviço de Criptografia de Senhas do Tipo-7 Password 
 	service password-encryption
@@ -186,10 +186,10 @@ clock set ??:??:?? ?? ???????? ????
 	!Consultar Planilha de Nomes de Usuários
 	!OBSERVAÇÃO: Caso o grupo tenha menos integrantes, desconsiderar a
 	!criação de 04 (quatro) usuários
-	username ???nome_do_primeiro_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_segundo_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_terceiro_integrante??? privilege 15 secret 123@senac
-	username ???nome_do_quarto_integrante??? privilege 15 secret 123@senac
+	username carlos privilege 15 secret 123@senac
+	username nathan privilege 15 secret 123@senac
+	username davi privilege 15 secret 123@senac
+	username luiz privilege 15 secret 123@senac
 	
 	!Acessando a linha console
 	line console 0
@@ -220,3 +220,104 @@ disable
 exit
 
 Depois de fazer as básicas configurações do Switch e do Router, tirar o cabo console do Router e voltar para o Switch.
+
+*Segundo dia do Projeto-infraestrutura 05/07/2024*
+
+CONFIGURAÇÃO DO VTY DO SWITCH E ROUTER
+
+O cara do cabeamento conectou o Switch com o router usando a porta 24 como trunk
+
+PRIMEIRA ETAPA: Configuração das Linhas Virtuais do Switch Cisco Catalyst 3560
+
+!Acessando o modo Exec Privilegiado
+enable
+
+	!Acessar modo de configuração global
+	configure terminal
+
+	!Acessando as linhas virtuais
+	line vty 0 4
+		
+		!Habilitando senha do tipo Password Tipo-7
+		password 123@senac
+		
+		!Forçando fazer login com usuário e senha local
+		login local 
+		
+		!Sincronizando os logs na tela
+		logging synchronous
+		
+		!Habilitando o tempo de inatividade do terminal
+		exec-timeout 5 30
+		
+		!Configuração do tipo de protocolo de transporte de entrada
+		transport input ssh
+		
+		!Saindo de todos os níveis
+		end
+
+!Salvando as configurações
+copy running-config startup-config
+	
+!Visualizando as configurações
+show running-config
+
+CONFIGURAÇÃO DO SSH DO SWITCH E DO ROUTER
+
+SEGUNDA ETAPA: Configuração das Linhas Virtuais do Router Cisco 2911
+
+!Acessando o modo Exec Privilegiado
+enable
+
+	!Acessar modo de configuração global
+	configure terminal
+  
+	!Acessando as linhas virtuais
+	line vty 0 4
+		
+		!Habilitando senha do tipo Password Tipo-7
+		password 123@senac
+		
+		!Forçando fazer login com usuário e senha local
+		login local 
+		
+		!Sincronizando os logs na tela
+		logging synchronous
+		
+		!Habilitando o tempo de inatividade do terminal
+		exec-timeout 5 30
+		
+		!Configuração do tipo de protocolo de transporte de entrada
+		transport input ssh
+		
+		!Saindo de todos os níveis
+		end
+
+!Salvando as configurações
+copy running-config startup-config
+	
+!Visualizando as configurações
+show running-config
+
+*PORTAS VLAN DO SWITCH*
+
+Porta 2 VLAN 31 CARLOS
+
+Porta 3 VLAN 32 Nathan
+
+Porta 4 VLAN 33 Davi
+
+Porta 5 VLAN 34 Luiz Damas
+
+Porta 6 VLAN 35 Wifi 03
+
+
+IP DE CADA PC
+
+ip address carlos: 172.16.31.254
+
+ip address nathan: 172.16.32.254
+
+ip address davi: 172.16.33.254
+
+ip address luiz: 172.16.34.254
