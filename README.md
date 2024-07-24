@@ -314,6 +314,8 @@ Porta 6 VLAN 35 Wifi 03
 
 IP DE CADA PC
 
+ip address SWITCH: 172.16.30.153
+
 ip address carlos: 172.16.31.254
 
 ip address nathan: 172.16.32.254
@@ -321,3 +323,13 @@ ip address nathan: 172.16.32.254
 ip address davi: 172.16.33.254
 
 ip address luiz: 172.16.34.254
+
+Aula 3 dia 24/07/2024
+
+INSTALAÇÃO DO LINUX
+
+Criar uma pasta para o linux e uma para o windos, e instalar no "Virtual box"
+
+Criar uma pasta com o nome de cada, criar outra pasta dentro da sua com "Windows", e com uma "Linux"
+
+
