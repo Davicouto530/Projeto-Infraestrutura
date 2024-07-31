@@ -328,6 +328,12 @@ Aula 3 dia 24/07/2024
 
 INSTALAÇÃO DO LINUX
 
+CONFIGURAÇÃO DO Access Point
+
+IPv4: 172.16.35.250 - Máscara: 255.255.255.0
+
+SSID: G-03 (G-03-2.4 E G-03-5.0) - Senha: 123@senac
+
 Criar uma pasta para o linux e uma para o windos, e instalar no "Virtual box"
 
 Criar uma pasta com o nome de cada, criar outra pasta dentro da sua com "Windows", e com uma "Linux"
